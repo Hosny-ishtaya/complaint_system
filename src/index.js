@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import './css/HomeSectiontwo.css'
+import './css/HomeSectionone.css'
+import './css/signin.css'
+import './css/Footer.css'
+import './css/signup.css'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
