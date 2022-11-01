@@ -22,6 +22,9 @@ const HomeSectionone=()=>{
                         <a href="/about">Compain Now!</a>   
 
                     </button>
+
+                          <i class="zmdi zmdi-arrow-right"></i>
+
                     </div>
 
 

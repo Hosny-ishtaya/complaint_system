@@ -4,6 +4,8 @@ const HomeSectiontwo=()=>{
     return(
 
 <div className="section-two">
+
+   <p></p> 
     
 </div>
 
