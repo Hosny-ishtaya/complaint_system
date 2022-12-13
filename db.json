@@ -1,0 +1,64 @@
+{
+  "employee": [
+    {
+      "id": 406903088,
+      "name": "hosny khaleel ",
+      "email": "hosnyish812@gmail.com",
+      "phone": "0598060758"
+    },
+    {
+      "id": 406903089,
+      "name": "hosny khaleel ishtaya",
+      "email": "hosnyish812@gmail.com",
+      "phone": "0598060757"
+    },
+    {
+      "id": "406558899",
+      "name": "mhajdhjde",
+      "email": "s11840073@stu.nah.edu",
+      "phone": "0599232106"
+    },
+    {
+      "id": "406987535",
+      "name": "ahmad",
+      "email": "ahmad@gmail.com",
+      "phone": "0598020104"
+    },
+    {
+      "id": "406897855",
+      "name": "khaleel",
+      "email": "khaleel@gmail.com",
+      "phone": "0598664455"
+    }
+  ],
+  "company": [
+    {
+      "id": "2",
+      "cname": "Al-Rajeh ",
+      "catogrytype": "cleaning product",
+      "location": "Palestine-Nablus",
+      "rate": "6"
+    },
+    {
+      "id": "2",
+      "cname": "Bravo super Market ",
+      "catogrytype": "Grocery Store",
+      "location": "Palestine-Nablus",
+      "rate": "7"
+    },
+    {
+      "id": "2",
+      "cname": "Al-Quds Company ",
+      "catogrytype": "Pharmaceuticals",
+      "location": "Palestine-Nablus",
+      "rate": "10"
+    },
+    {
+      "id": "2",
+      "cname": "Cosmoline",
+      "catogrytype": "cosmatics",
+      "location": "Palestine-Nablus",
+      "rate": "9"
+    }
+  ]
+}

@@ -1,21 +1,20 @@
 .signup-content{
    
-    position:static;
+    position:relative;
     display: flex;
-    
-    margin: auto; 
-    margin-left: 133px;
-    margin-top: 50px;
+    margin: auto;
     height: 590px; 
     border-radius: 20px;
-    margin-right: 110px;
     box-shadow: 1px 1px 10px lightblue;
-
-
+    align-content: center;
+    justify-content: center;   
+    width: 1000px;
+    margin-top: 0px;
+    padding-top: 25px;
+    background-color: #fff;
 }
 .signup-form{
     height: 600px;
     width:  600px;
-   
     margin-top: -15px;
 }

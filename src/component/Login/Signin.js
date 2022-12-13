@@ -51,7 +51,9 @@ const Signin=()=>{
 
                             
                                 </figure>  
-                                <NavLink to="/signup" className="signin-image-link">Create on Account..</NavLink>
+                                {/* <NavLink to="/signup" className="signin-image-link">Create on Account..</NavLink> */}
+
+                                 <p className="title-page">Sign in Portal</p>
                                                         
                             </div>
             </div>

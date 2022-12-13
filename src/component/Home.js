@@ -1,7 +1,9 @@
 import React from "react";
-import image from '../image/wp1.png'
+import Footer from "./Footer";
+// import image from '../image/wp1.png'
 import HomeSectionone from "./HomeSectionone";
 import HomeSectiontwo from "./HomeSectiontwo";
+
 
 const Home=()=>{
     return(
@@ -9,7 +11,9 @@ const Home=()=>{
 <div className="home">
     <HomeSectionone/>
     <HomeSectiontwo/>
-    <img src={image} className="img"></img>
+    {/* <Footer/> */}
+    
+    {/* <img src={image} className="img"></img> */}
    
 </div>
 

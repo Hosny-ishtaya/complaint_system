@@ -4,17 +4,17 @@ const Navbar=()=>{
 
 <div className="navbar">
     <div className="container">  
-      <a href="#" className="logo">CPA</a>
+      <a href="/" className="logo">CPA</a>
       {/* <img src="uri for pic" alt="logo"/> */}
 
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About us</a></li>
-            <li><a href="/service">Service</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a className="log" href="/signin">Login</a></li>
+        <ull>
+            <lii><a href="/">Home</a></lii>
+            <lii><a href="/about">Admin</a></lii>
+            <lii><a href="/employeedash">Employee</a></lii>
+            <lii><a href="/contact">Contact Us</a></lii>
+            <lii><a className="log" href="/signin">Login</a></lii>
             
-        </ul>
+        </ull>
     </div> 
 </div>
  

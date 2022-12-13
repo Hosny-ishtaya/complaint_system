@@ -1,17 +1,17 @@
-import React from "react";
+import React from 'react';
 
 
-
-const Contact=()=>{
-    return(
-
-<div className="contact">
-
-    <p>CONTACT</p>    
+ class Contact extends React.Component {
     
-</div>
+    render() {
+      return (
+       <div>
 
-
-    )
+        <p>Contact</p>
+        
+      </div>
+      );
+    }
 }
+
 export default Contact;

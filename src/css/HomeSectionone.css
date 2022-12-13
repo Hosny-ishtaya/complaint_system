@@ -3,12 +3,23 @@
     background-color: #472d7c;
   
     width: 150px;
-    height: 30px;
+    height: 40px;
     border: none;
     border-radius: 20px;
+    margin-right: 5px;
     
   
   }
+  .btnn i{
+
+   
+      text-align: center;
+      line-height: 55px;
+      color:  #444;
+      font-size: 1.1rem;
+
+  }
+
   .btn-comp a{
   
     text-decoration: none;
@@ -33,7 +44,7 @@
   .Top-data{
   
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 1.5 rem;
     color: #472d7c;
   

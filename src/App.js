@@ -7,9 +7,15 @@ import {BrowserRouter,Route,Routes} from 'react-router-dom';
 import About from './component/About';
 import Service from './component/Service';
 import Contact from './component/Contact';
-import Footer from './component/Footer';
-import Signup from './component/Login/Signup';
+
+import AddEmployee from './component/Login/AddEmployee';
 import Signin from './component/Login/Signin';
+import Dash from './component/Admin/dash';
+import 'antd/dist/antd.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import EmployeeDash from './component/EmployeeDash/EmployeeDash';
+import 'semantic-ui-css/semantic.min.css'
+
 
 
 class App extends Component {  
@@ -22,14 +28,13 @@ class App extends Component {
            <Navbar/> 
                <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/about" element={<About/>}/>
-                    <Route path="/service" element={<Service/>}/>
-                    <Route path="/contact" element={<Contact/>}/>
-                    <Route path="/signup" element={<Signup/>}/>
+                    <Route path="/about/*" element={<Dash/>}/>
+                    <Route path="/employeedash/*" element={<EmployeeDash/>}/>
+                    {/* <Route path="/signup" element={<Signup/>}/> */}
                     <Route path="/signin" element={<Signin/>}/>
 
                </Routes>
-           <Footer/>    
+               
            </div>
         </BrowserRouter>
 
