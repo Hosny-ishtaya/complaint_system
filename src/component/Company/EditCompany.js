@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import image from '../../image/Company.png';
-import { NavLink,useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Password from "antd/lib/input/Password";
 
 
 
-const AddCompany=()=>{
+const EditCompany=()=>{
 
-    const navigate = useNavigate();
     const [id,idchange]=useState("");
     const [cname,companynamechange]=useState("");
     const [catogrytype,catogrytyoechange]=useState("");
@@ -15,32 +15,48 @@ const AddCompany=()=>{
     const [rate,ratechange]=useState("");
     const [validation,valchange]=useState("");
 
-    const handlesubmit=(e)=>{
-        e.preventDefault();
-       
-      //  console.log({id,name,email,phone,password,rpassword});
-      const empdata={id,cname,catogrytype,location,rate};
-
-        fetch(" http://localhost:8000/company",{
-            method:"POST",
-            headers:{"content-type":"application/json"},
-            body:JSON.stringify(empdata)
-          }).then((res)=>{
-            alert('Saved successfully.')
-            companynamechange("")
-            idchange("")
-            catogrytyoechange("")
-            locationchange("")
-            ratechange("")
-            navigate('/employeedash/company')
-            
-          }).catch((err)=>{
-            console.log(err.message)
-          })
+    //-----------------
     
-        }
+    const { commpid } = useParams();
+
+    //const [empdata, empdatachange] = useState({});
+
+    useEffect(() => {
+        fetch("http://localhost:8000/company/" + commpid).then((res) => {
+            return res.json();
+        }).then((resp) => {
+            idchange(resp.id);
+            companynamechange(resp.cname);
+            catogrytyoechange(resp.catogrytype);
+            locationchange(resp.location);
+            ratechange(resp.rate);
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    }, []);
 
 
+    const navigate=useNavigate();
+
+    const handlesubmit=(e)=>{
+      e.preventDefault();
+
+
+      const empdata={id,cname,catogrytype,location,rate};
+      
+
+      fetch("http://localhost:8000/company/"+commpid,{
+        method:"PUT",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify(empdata)
+      }).then((res)=>{
+        alert('Saved successfully.')
+        navigate('/employeedash/company');
+      }).catch((err)=>{
+        console.log(err.message)
+      })
+
+    }
     
     return(
         <>
@@ -48,7 +64,7 @@ const AddCompany=()=>{
             <div className="container mt-5" >
                 <div className="signup-content">
                     <div className="signup-form">
-                        <h2 className="form-title">Add Company</h2>
+                        <h2 className="form-title">Edit Company</h2>
                         <form className="register-form" id="register-form" onSubmit={handlesubmit}>
                             {/* company name  */}
                             <div className="form-group">
@@ -112,7 +128,7 @@ const AddCompany=()=>{
                             {/* submit button  */}
                             <div className="form-button">
 
-                                <input type="submit" name="signup" id="signup" classname="form-submit" value="Add"/>
+                                <input type="submit" name="signup" id="signup" classname="form-submit" value="Save"/>
 
 
                             </div>
@@ -143,4 +159,4 @@ const AddCompany=()=>{
 
     )
 }
-export default AddCompany;
+export default EditCompany;

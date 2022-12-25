@@ -13,12 +13,6 @@
       "phone": "0598060757"
     },
     {
-      "id": "406558899",
-      "name": "mhajdhjde",
-      "email": "s11840073@stu.nah.edu",
-      "phone": "0599232106"
-    },
-    {
       "id": "406987535",
       "name": "ahmad",
       "email": "ahmad@gmail.com",
@@ -33,11 +27,11 @@
   ],
   "company": [
     {
-      "id": "2",
+      "id": "1",
       "cname": "Al-Rajeh ",
       "catogrytype": "cleaning product",
       "location": "Palestine-Nablus",
-      "rate": "6"
+      "rate": "8"
     },
     {
       "id": "2",
@@ -47,18 +41,25 @@
       "rate": "7"
     },
     {
-      "id": "2",
+      "id": "3",
       "cname": "Al-Quds Company ",
       "catogrytype": "Pharmaceuticals",
       "location": "Palestine-Nablus",
       "rate": "10"
     },
     {
-      "id": "2",
+      "id": "5",
       "cname": "Cosmoline",
       "catogrytype": "cosmatics",
       "location": "Palestine-Nablus",
-      "rate": "9"
+      "rate": "10"
+    },
+    {
+      "id": "12",
+      "cname": "sama",
+      "catogrytype": "Pharmaceuticals",
+      "location": "nablus-salem",
+      "rate": "7"
     }
   ]
 }

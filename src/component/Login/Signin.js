@@ -1,10 +1,22 @@
-import React from "react";
+import React , { useState }from "react";
 import image from '../../image/logo.png';
+
 import { NavLink } from "react-router-dom";
 import 'material-icons/iconfont/material-icons.css';
 
 
 const Signin=()=>{
+
+    const [email,emailchange]=useState("");
+    const [password,passwordchange]=useState("");
+
+
+    const handlesubmit=(e)=>{
+        e.preventDefault();
+
+        console.log(email,password)
+    }
+
     return(
         <>
         <section className="signin">
@@ -12,7 +24,7 @@ const Signin=()=>{
                 <div className="signin-content">
                     <div className="signin-form">
                         <h2 className="form-title">Sign in</h2>
-                        <form className="register-form" id="register-form">
+                        <form className="register-form" id="register-form" onSubmit={handlesubmit}>
 
                            {/* Email */}
                             <div className="form-group">
@@ -21,7 +33,7 @@ const Signin=()=>{
                                     <i className="zmdi zmdi-email matirial-icons-name"></i>
 
                                 </label>
-                                <input type="text" name="email" id="email" autoComplete="off" placeholder="Your Email"></input>
+                                <input value={email} onChange={e=>emailchange(e.target.value)} type="text" name="email" id="email" autoComplete="off" placeholder="Your Email"></input>
                             </div>
                             {/* password  */}
                             <div className="form-group">
@@ -30,7 +42,7 @@ const Signin=()=>{
                                     <i className="zmdi zmdi-lock matirial-icons-name"></i>
 
                                 </label>
-                                <input type="password" name="password" id="password" autoComplete="off" placeholder="Your password"></input>
+                                <input value={password} onChange={e=>passwordchange(e.target.value)} type="password" name="password" id="password" autoComplete="off" placeholder="Your password"></input>
                             </div>
 
                             {/* submit button  */}

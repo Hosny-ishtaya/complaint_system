@@ -19,7 +19,7 @@ const HomeSectionone=()=>{
                     <div className="btnn">
                     <button className="btn-comp">
 
-                        <a href="/about">Compain Now!</a>   
+                        <a href="/about">Lets Start Now!</a>   
 
                     </button>
 

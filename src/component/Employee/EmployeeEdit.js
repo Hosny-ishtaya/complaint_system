@@ -62,7 +62,7 @@ const EmployeeEdit =()=>{
             <div className="container mt-5" >
                 <div className="signup-content">
                     <div className="signup-form">
-                        <h2 className="form-title">Edit Information</h2>
+                        <h2 className="form-title">Edit Employee</h2>
                         <form className="register-form" id="register-form" onSubmit={handlesubmit}>
                             {/* User name  */}
                             <div className="form-group">

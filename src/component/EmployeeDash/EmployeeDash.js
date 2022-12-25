@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import EmployeeDashTitle from './EmplooyeeDashTitle'
 import CompanyList from '../Company/CompanyList';
 import AddCompany from '../Company/AddCompany';
+import EditCompany from '../Company/EditCompany';
 import AddEmployee from '../Login/AddEmployee';
 import EmployeeList from '../Employee/EmployeeList';
 
@@ -109,7 +110,7 @@ const EmployeeDash = () => {
                      <Route path="/company" element={<CompanyList/>}/>
                      <Route path="/addcompany" element={<AddCompany/>}/> 
                      <Route path="/pagec1" element={<EmployeeDetail/>}/>
-                     <Route path="/pagec2" element={<div>pagec2</div>}/>
+                     <Route path="/editecompany/:commpid" element={<EditCompany/>}/>
                      <Route path="/pagec3" element={<div>pagec3</div>}/>              
                </Routes>
 

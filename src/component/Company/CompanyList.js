@@ -9,9 +9,9 @@ const CompanyList = () => {
     // const LoadDetail = (id) => {
     //     navigate("/about/detail/" + id);
     // }
-    // const LoadEdit = (id) => {
-    //     navigate("/about/edite/" + id);
-    // }
+    const Editfunction = (id) => {
+        navigate("/employeedash/editecompany/" + id);
+    }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
             fetch("http://localhost:8000/company/" + id, {
@@ -71,7 +71,7 @@ const CompanyList = () => {
                                         <td>{item.catogrytype}</td>
                                         <td>{item.location}</td>
                                         <td>{item.rate}</td>
-                                        <td><a   className="btn btn-success">Edit</a>
+                                        <td><a onClick={() => {  Editfunction(item.id) }}  className="btn btn-success">Edit</a>
                                             <a onClick={() => { Removefunction(item.id) }}  className="btn btn-danger">Remove</a>
                                             {/* <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a> */}
                                         </td>
