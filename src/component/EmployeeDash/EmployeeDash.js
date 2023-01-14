@@ -3,6 +3,9 @@ import EmployeeDashTitle from './EmplooyeeDashTitle'
 import CompanyList from '../Company/CompanyList';
 import AddCompany from '../Company/AddCompany';
 import EditCompany from '../Company/EditCompany';
+import Complaint_grocery  from '../Complaint/Grocery_store_complaint'
+import Complaint_Details from '../Complaint/Complaint_Details';
+import Editcomplaint from '../Complaint/Editcomplaint'
 import AddEmployee from '../Login/AddEmployee';
 import EmployeeList from '../Employee/EmployeeList';
 
@@ -32,7 +35,7 @@ const items = [
     getItem('cleaning product', '/employeedash/pagec1'),
     getItem('cosmatics', '/employeedash/pagec2'),
     getItem('Pharmaceuticals', '/employeedash/pagec3'),
-    getItem('Grocery Store', '/employeedash/pagec3'),
+    getItem('Grocery Store', '/employeedash/pagec4'),
   ]),
   getItem('Sign out', '/', <FileOutlined />),
 ];
@@ -105,13 +108,19 @@ const EmployeeDash = () => {
 
   function Content (){
 
+
     return <div>   
                <Routes>
+                     <Route path="/" element={<div>home employee</div>}/>
                      <Route path="/company" element={<CompanyList/>}/>
                      <Route path="/addcompany" element={<AddCompany/>}/> 
                      <Route path="/pagec1" element={<EmployeeDetail/>}/>
-                     <Route path="/editecompany/:commpid" element={<EditCompany/>}/>
-                     <Route path="/pagec3" element={<div>pagec3</div>}/>              
+                     <Route path="/editecompany/:commpid"  element={<EditCompany/>}/>
+                     {/* <Route path="/complaintcompany/:commpid"  element={<div>compalints</div>}/> */}
+                     <Route path="/pagec3" element={<div>pagec3</div>}/>
+                     <Route path="/pagec4" element={<Complaint_grocery/>}/> 
+                     <Route path="/pagec4/:comid" element={<Complaint_Details/>}/>
+                     <Route path="/editgcomplaint/:comid" element={<Editcomplaint/>}/>                
                </Routes>
 
        </div>

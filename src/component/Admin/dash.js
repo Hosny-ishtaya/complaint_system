@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddEmployee from '../Login/AddEmployee';
 import EmployeeList from '../Employee/EmployeeList';
 import AdminDashTitle from './AdminDashTitle';
+import CustemerList from '../Custemer/CustemerList';
 
 import {BrowserRouter,Route,Routes,useNavigate} from 'react-router-dom';
 import {
@@ -25,13 +26,13 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem('Employee', '/about/employeelist', <UserOutlined  />),
-  getItem('Company', '/', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '/about/page3'),
-    getItem('Bill', '/about/page4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
+  getItem('Custemer', '/about/custemerlist', <DesktopOutlined />),
+  // getItem('User', 'sub1', <UserOutlined />, [
+  //   getItem('Tom', '/about/page3'),
+  //   getItem('Bill', '/about/page4'),
+  //   getItem('Alex', '5'),
+  // ]),
+  // getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
   getItem('Sign out', '/', <FileOutlined />),
 ];
 const Dash = () => {
@@ -112,6 +113,7 @@ const Dash = () => {
                      <Route path="/employeelist" element={<EmployeeList/>}/>
                      <Route path="/edite/:empid" element={<EmployeeEdit/>}/>
                      <Route path="/detail/:empid" element={<EmployeeDetail/>}/>
+                     <Route path="/custemerlist" element={<CustemerList/>}/>
                      <Route path="/page4" element={<div>page4</div>}/>              
                </Routes>
 

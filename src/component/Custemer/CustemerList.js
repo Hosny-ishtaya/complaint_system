@@ -2,19 +2,19 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
-const EmployeeList = () => {
+const CustemerList = () => {
     const [empdata, empdatachange] = useState(null);
      const navigate = useNavigate();
 
     // const LoadDetail = (id) => {
     //     navigate("/about/detail/" + id);
     // }
-    const LoadEdit = (id) => {
-        navigate("/about/edite/" + id);
-    }
+    // const LoadEdit = (id) => {
+    //     navigate("/about/edite/" + id);
+    // }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/deleteEmployee?ide=` + id, {
+            fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/deleteCustomer?idc=` + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
@@ -29,7 +29,7 @@ const EmployeeList = () => {
 
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/getAllEmployee`).then((res) => {
+        fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/getAllCustomer`).then((res) => {
             return res.json();
         }).then((resp) => {
 
@@ -43,12 +43,12 @@ const EmployeeList = () => {
         <div className="container">
             <div className="card">
                 <div className="card-title">
-                    <h2>Employee List</h2>
+                    <h2>Customer List</h2>
                 </div>
                 <div className="card-body">
-                    <div className="divbtn">
+                    {/* <div className="divbtn">
                         <Link to="/about/addemployee" className="btn btn-success">Add Employee</Link>
-                    </div>
+                    </div> */}
                     <table className="table table-bordered">
                         <thead className="bg-dark text-white">
                             <tr>
@@ -70,7 +70,8 @@ const EmployeeList = () => {
                                         <td>{item.email}</td>
                                         <td>{item.phone}</td>
                                         <td>{item.address}</td>
-                                        <td><a onClick={() => { LoadEdit(item.social_number) }} className="btn btn-success">Edit</a>
+                                        <td>
+                                            {/* <a onClick={() => { LoadEdit(item.social_number) }} className="btn btn-success">Edit</a> */}
                                             <a onClick={() => { Removefunction(item.social_number) }} className="btn btn-danger">Remove</a>
                                             {/* <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a> */}
                                         </td>
@@ -87,4 +88,4 @@ const EmployeeList = () => {
     );
 }
 
-export default EmployeeList;
+export default CustemerList;

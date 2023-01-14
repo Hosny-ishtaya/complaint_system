@@ -7,27 +7,31 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 const EmployeeEdit =()=>{
 
     
-    const[id,idchange]=useState("");
-    const[name,namechange]=useState("");
+    const[social_number,social_numberchange]=useState("");
+    const[username,namechange]=useState("");
     const[email,emailchange]=useState("");
     const[phone,phonechange]=useState("");
+    const[address,addresschange]=useState("");
     const[validation,valchange]=useState(false);
     const[password,passwordchange]=useState("");
-    const[rpassword,rpasswordchange]=useState(false);
+    // const[rpassword,rpasswordchange]=useState(false);
 
 
     const { empid } = useParams();
 
-    //const [empdata, empdatachange] = useState({});
+    const [empdata, empdatachange] = useState({});
 
     useEffect(() => {
-        fetch("http://localhost:8000/employee/" + empid).then((res) => {
+        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/getEmployeeById?Social=` + empid).then((res) => {
             return res.json();
         }).then((resp) => {
-            idchange(resp.id);
-            namechange(resp.name);
+            namechange(resp.username);
             emailchange(resp.email);
             phonechange(resp.phone);
+            addresschange(resp.address);
+            passwordchange(resp.password);
+            social_numberchange(resp.social_number);
+
         }).catch((err) => {
             console.log(err.message);
         })
@@ -40,16 +44,16 @@ const EmployeeEdit =()=>{
       e.preventDefault();
 
 
-      const empdata={id,name,email,phone};
+      const empdata={username,phone,address,email,password,social_number};
       
 
-      fetch("http://localhost:8000/employee/"+empid,{
+      fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/editEmployee`,{
         method:"PUT",
         headers:{"content-type":"application/json"},
         body:JSON.stringify(empdata)
       }).then((res)=>{
         alert('Saved successfully.')
-        navigate('/');
+        navigate('/about/employeelist');
       }).catch((err)=>{
         console.log(err.message)
       })
@@ -71,10 +75,10 @@ const EmployeeEdit =()=>{
                                     <i className="zmdi zmdi-account matirial-icons-name"></i>
 
                                 </label>
-                                <input value={name} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} type="text" name="name" id="name" autoComplete="off" placeholder="Your name"></input>
+                                <input value={username} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} type="text" name="name" id="name" autoComplete="off" placeholder="Your name"></input>
 
                             </div>
-                            { name.length==0 && validation && <span className="text-danger">Enter your name</span>}
+                            { username.length==0 && validation && <span className="text-danger">Enter your name</span>}
                            {/* Email */}
                             <div className="form-group">
                                 <label htmlFor="email">
@@ -96,15 +100,26 @@ const EmployeeEdit =()=>{
                                 <input value={phone} onMouseDown={e=>valchange(true)} onChange={e=>phonechange(e.target.value)} type="number" name="phone" id="phone" autoComplete="off" placeholder="Your Phone"></input>
                             </div>
                             {/* { phone.length==0 && validation && <span className="text-danger">Enter your phone</span>} */}
-                            {/* ID  */}
+                            
+                            {/* address*/}
                             <div className="form-group">
+                                <label htmlFor="phone">
+
+                                    <i className="zmdi zmdi-phone-in-talk matirial-icons-name"></i>
+
+                                </label>
+                                <input value={address} onMouseDown={e=>valchange(true)} onChange={e=>addresschange(e.target.value)} type="text" name="address" id="address" autoComplete="off" placeholder="Your address"></input>
+                            </div>
+                            {/* { phone.length==0 && validation && <span className="text-danger">Enter your phone</span>} */}
+                            {/* ID  */}
+                            {/* <div className="form-group">
                                 <label htmlFor="id">
 
                                     <i className="zmdi zmdi-account matirial-icons-name"></i>
 
                                 </label>
                                 <input value={id} onMouseDown={e=>valchange(true)} onChange={e=>idchange(e.target.value)} type="number" name="id" id="id" autoComplete="off" placeholder="Your ID"></input>
-                            </div>
+                            </div> */}
                             {/* { id.length==0 && validation && <span className="text-danger">Enter your Id</span>} */}
 
                             {/* password  */}
@@ -118,14 +133,14 @@ const EmployeeEdit =()=>{
                             </div>
                             {/* { password.length==0 && validation && <span className="text-danger">Enter Your Password</span>} */}
                             {/* password  */}
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label htmlFor="cpassword">
 
                                     <i className="zmdi zmdi-lock matirial-icons-name"></i>
 
                                 </label>
                                 <input type="password" value={rpassword} onMouseDown={e=>valchange(true)} onChange={e=>rpasswordchange(e.target.value)} name="cpassword" id="cpassword" autoComplete="off" placeholder="Confirm Your Password"></input>
-                            </div>
+                            </div> */}
                             {/* { rpassword.length==0 && validation && <span className="text-danger">Re Write Password</span>} */}
 
                             {/* submit button  */}

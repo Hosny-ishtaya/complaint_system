@@ -7,23 +7,32 @@ import Password from "antd/lib/input/Password";
 
 const AddEmployee=()=>{
 
-    const [id,idchange]=useState("");
-    const [name,namechange]=useState("");
+    const [social_number,idchange]=useState("");
+    const [username,namechange]=useState("");
     const [email,emailchange]=useState("");
+    const [address,addresschange]=useState("");
     const [phone,phonechange]=useState("");
     const [password,passwordchange]=useState("");
-    const [rpassword,rpasswordchange]=useState("");
     const [validation,valchange]=useState("");
 
     const handlesubmit=(e)=>{
         e.preventDefault();
       //  console.log({id,name,email,phone,password,rpassword});
-      const empdata={id,name,email,phone};
+      const empdata={username,phone,address,email,password,social_number};
 
-        fetch("http://localhost:8000/employee",{
+        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/registerEmployee`,{
             method:"POST",
             headers:{"content-type":"application/json"},
-            body:JSON.stringify(empdata)
+            body:JSON.stringify({
+
+                "username":username,
+                "phone":phone,
+                "address":address,
+                "email":email,
+                "password":password,
+                "social_number":social_number                
+            }),
+            redirect:'follow'
           }).then((res)=>{
             alert('Saved successfully.')
             namechange("")
@@ -31,7 +40,8 @@ const AddEmployee=()=>{
             emailchange("")
             phonechange("")
             passwordchange("")
-            rpasswordchange("")
+            addresschange("")
+           
             
 
             
@@ -58,10 +68,10 @@ const AddEmployee=()=>{
                                     <i className="zmdi zmdi-account matirial-icons-name"></i>
 
                                 </label>
-                                <input value={name} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} type="text" name="name" id="name" autoComplete="off" placeholder="Your name"></input>
+                                <input value={username} onMouseDown={e=>valchange(true)} onChange={e=>namechange(e.target.value)} type="text" name="name" id="name" autoComplete="off" placeholder="Your name"></input>
 
                             </div>
-                            { name.length==0 && validation && <span className="text-danger">Enter your name</span>}
+                            { username.length==0 && validation && <span className="text-danger">Enter your name</span>}
                            {/* Email */}
                             <div className="form-group">
                                 <label htmlFor="email">
@@ -90,9 +100,18 @@ const AddEmployee=()=>{
                                     <i className="zmdi zmdi-account matirial-icons-name"></i>
 
                                 </label>
-                                <input value={id} onMouseDown={e=>valchange(true)} onChange={e=>idchange(e.target.value)} type="number" name="id" id="id" autoComplete="off" placeholder="Your ID"></input>
+                                <input value={social_number} onMouseDown={e=>valchange(true)} onChange={e=>idchange(e.target.value)} type="text" name="id" id="id" autoComplete="off" placeholder="Your ID"></input>
                             </div>
                             {/* { id.length==0 && validation && <span className="text-danger">Enter your Id</span>} */}
+
+                            <div className="form-group">
+                                <label htmlFor="address">
+
+                                    <i className="zmdi zmdi-email matirial-icons-name"></i>
+
+                                </label>
+                                <input value={address} onMouseDown={e=>valchange(true)} onChange={e=>addresschange(e.target.value)} type="text" name="address" id="adress" autoComplete="off" placeholder="Your Address"></input>
+                            </div>
 
                             {/* password  */}
                             <div className="form-group">
@@ -104,17 +123,6 @@ const AddEmployee=()=>{
                                 <input type="password" value={password} onMouseDown={e=>valchange(true)} onChange={e=>passwordchange(e.target.value)} name="password" id="password" autoComplete="off" placeholder="Your password"></input>
                             </div>
                             {/* { password.length==0 && validation && <span className="text-danger">Enter Your Password</span>} */}
-                            {/* password  */}
-                            <div className="form-group">
-                                <label htmlFor="cpassword">
-
-                                    <i className="zmdi zmdi-lock matirial-icons-name"></i>
-
-                                </label>
-                                <input type="password" value={rpassword} onMouseDown={e=>valchange(true)} onChange={e=>rpasswordchange(e.target.value)} name="cpassword" id="cpassword" autoComplete="off" placeholder="Confirm Your Password"></input>
-                            </div>
-                            {/* { rpassword.length==0 && validation && <span className="text-danger">Re Write Password</span>} */}
-
                             {/* submit button  */}
                             <div className="form-button">
 

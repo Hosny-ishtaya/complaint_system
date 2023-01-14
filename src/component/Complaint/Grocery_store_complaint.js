@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useParams } from "react-router-dom";
+import Complaint_Details from './Complaint_Details';
 
 
-const CompanyList = () => {
-    const [compdata, compdatachange] = useState(null);
+const Complaint_grocery = () => {
+    const [complaindata, complainchange] = useState(null);
      const navigate = useNavigate();
 
-    const LoadComplaint = (id) => {
-        navigate("/employeedash/complaintcompany/" + id);
+    const loadDetail = (id) => {
+        navigate("/employeedash/pagec4/" + id);
+
     }
     const Editfunction = (id) => {
-        navigate("/employeedash/editecompany/" + id);
+        navigate("/employeedash/editgcomplaint/" + id);
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/deleteCompany?idC=` + id, {
+            fetch("http://localhost:8000/company/" + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
@@ -27,13 +29,13 @@ const CompanyList = () => {
 
 
 
-
+    const { iid } = useParams();
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/getAllComp`).then((res) => {
+        fetch("http://localhost:8000/complaint").then((res) => {
             return res.json();
         }).then((resp) => {
 
-            compdatachange(resp);
+            complainchange(resp);
             console.log(resp);
         }).catch((err) => {
             console.log(err.message);
@@ -43,37 +45,35 @@ const CompanyList = () => {
         <div className="container">
             <div className="card">
                 <div className="card-title">
-                    <h2>Company List</h2>
+                    <h2>Grocery Store Complaint</h2>
                 </div>
                 <div className="card-body">
-                    <div className="divbtn">
-                        <Link to="/employeedash/addcompany" className="btn btn-success">Add Company</Link>
-                    </div>
                     <table className="table table-bordered">
                         <thead className="bg-dark text-white">
                             <tr>
                                 <td>ID</td>
                                 <td>Name Of Company</td>
-                                <td>Type Of Company</td>
-                                <td>Location</td>
-                                <td>Rate of Company</td>
+                                <td>Catogry Type</td>
+                                <td>Description</td>
+                                <td>Status</td>
                                 <td>Action</td>
                                 
                             </tr>
                         </thead>
                         <tbody>
 
-                            {compdata &&
-                                compdata.map(item => (
+                            {complaindata &&
+                                complaindata.map(item => (
                                     <tr key={item.id}>
                                         <td>{item.id}</td>
-                                        <td>{item.name}</td>
-                                        <td>{item.type_company}</td>
-                                        <td>{item.locations}</td>
-                                        <td>{item.ratting_status}</td>
-                                        <td><a onClick={() => {  Editfunction(item.id) }}  className="btn btn-success">Edit</a>
+                                        <td>{item.namecompany}</td>
+                                        <td>{item.catogrytype}</td>
+                                        <td>{item.description}</td>
+                                        <td>{item.stutus}</td>
+                                        <td><a onClick={() => {  Editfunction(item.id) }}  className="btn btn-success">Update Status</a>
                                             <a onClick={() => { Removefunction(item.id) }}  className="btn btn-danger">Remove</a>
-                                            <a onClick={() => { LoadComplaint(item.id) }} className="btn btn-primary">Complaints</a>
+                                            {/* <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a> */}
+                                            <a onClick={() => {  loadDetail(item.id) }} className="btn btn-primary">Details</a>
                                         </td>
                                     </tr>
                                 ))
@@ -88,4 +88,4 @@ const CompanyList = () => {
     );
 }
 
-export default CompanyList;
+export default Complaint_grocery;

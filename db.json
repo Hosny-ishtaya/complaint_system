@@ -1,29 +1,32 @@
 {
-  "employee": [
+  "complaint": [
     {
-      "id": 406903088,
-      "name": "hosny khaleel ",
-      "email": "hosnyish812@gmail.com",
-      "phone": "0598060758"
+      "id": 1,
+      "namecompany": "bravo",
+      "id-user": "406908088",
+      "catogrytype": "store",
+      "description": "proplem in price",
+      "stutus": "in progress"
     },
     {
-      "id": 406903089,
-      "name": "hosny khaleel ishtaya",
-      "email": "hosnyish812@gmail.com",
-      "phone": "0598060757"
-    },
-    {
-      "id": "406987535",
-      "name": "ahmad",
-      "email": "ahmad@gmail.com",
-      "phone": "0598020104"
-    },
-    {
-      "id": "406897855",
-      "name": "khaleel",
-      "email": "khaleel@gmail.com",
-      "phone": "0598664455"
+      "id": 2,
+      "namecompany": "dolphin",
+      "id-user": "406908089",
+      "catogrytype": "ware",
+      "description": "proplem in price",
+      "stutus": "in progress"
     }
+  ],
+  "employee": [
+    {  
+      "username": "hosny khaleel ",
+      "phone": 598060758,
+      "address": "nablus",
+      "email": "hosnyish812@gmail.com",
+      "password":"000",
+      "social_number":"22251"
+    }
+  
   ],
   "company": [
     {
@@ -31,7 +34,7 @@
       "cname": "Al-Rajeh ",
       "catogrytype": "cleaning product",
       "location": "Palestine-Nablus",
-      "rate": "8"
+      "rate": "9"
     },
     {
       "id": "2",
@@ -53,13 +56,6 @@
       "catogrytype": "cosmatics",
       "location": "Palestine-Nablus",
       "rate": "10"
-    },
-    {
-      "id": "12",
-      "cname": "sama",
-      "catogrytype": "Pharmaceuticals",
-      "location": "nablus-salem",
-      "rate": "7"
     }
   ]
 }
