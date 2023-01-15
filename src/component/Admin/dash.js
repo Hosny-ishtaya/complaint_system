@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import AddEmployee from '../Login/AddEmployee';
 import EmployeeList from '../Employee/EmployeeList';
 import AdminDashTitle from './AdminDashTitle';
@@ -15,6 +15,7 @@ import {
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import EmployeeEdit from '../Employee/EmployeeEdit';
 import EmployeeDetail from '../Employee/EmployeeDetail';
+import Allcomplaints from './Allcomplaints';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -27,6 +28,7 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem('Employee', '/about/employeelist', <UserOutlined  />),
   getItem('Custemer', '/about/custemerlist', <DesktopOutlined />),
+  getItem('All Complaint', '/about/allcomplaint', <DesktopOutlined />),
   // getItem('User', 'sub1', <UserOutlined />, [
   //   getItem('Tom', '/about/page3'),
   //   getItem('Bill', '/about/page4'),
@@ -38,6 +40,20 @@ const items = [
 const Dash = () => {
 
    const navigate =useNavigate()
+
+   useEffect(()=>{
+
+    let admin=window.sessionStorage.getItem('admin');
+
+    console.log('ttthhh',admin)
+    if(admin===''||admin===null)
+    {
+      navigate('/signin');
+    }
+
+
+
+   },[]);
 
   const [collapsed, setCollapsed] = useState(false);
   // const {
@@ -108,12 +124,13 @@ const Dash = () => {
 
     return <div>   
                <Routes>
-                     <Route path="/" element={<div>home</div>}/> 
+                     <Route path="/" element={<h1 className='text-center'>Wellcome Admin</h1>}/> 
                      <Route path="/addemployee" element={<AddEmployee/>}/>
                      <Route path="/employeelist" element={<EmployeeList/>}/>
                      <Route path="/edite/:empid" element={<EmployeeEdit/>}/>
                      <Route path="/detail/:empid" element={<EmployeeDetail/>}/>
                      <Route path="/custemerlist" element={<CustemerList/>}/>
+                     <Route path="/allcomplaint" element={<Allcomplaints/>}/>
                      <Route path="/page4" element={<div>page4</div>}/>              
                </Routes>
 

@@ -1,5 +1,9 @@
-import React , { useState }from "react";
+import React , { useEffect, useState }from "react";
 import image from '../../image/logo.png';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
+
 
 import { NavLink } from "react-router-dom";
 import 'material-icons/iconfont/material-icons.css';
@@ -10,11 +14,103 @@ const Signin=()=>{
     const [email,emailchange]=useState("");
     const [password,passwordchange]=useState("");
 
+    const navigate = useNavigate();
+
+    useEffect(()=>{
+
+    sessionStorage.clear();
+
+    },[]);
 
     const handlesubmit=(e)=>{
         e.preventDefault();
 
-        console.log(email,password)
+        const validation=()=>{
+
+            let result=true;
+            if(email===''||email===null){
+                result=false;
+                toast.warning('please enter email');
+                alert('please enter email');
+                
+            }
+            if(password===''||password===''){
+    
+                result=false;
+                console.log("nono")
+                toast.warning('please enter password');
+                alert('please enter password');
+
+                
+            }
+            return result;
+        }
+
+        if(validation())
+        {
+
+            
+        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/signIn`,{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify({
+
+                "email":email,
+                "password":password,            
+            }),
+            redirect:'follow'
+          }).then((res)=>{
+            return res.json();
+            console.log(res.status);
+            console.log(res);
+
+
+            
+          }).then((resp)=>{
+
+           if(Object.keys(resp).length===0)
+            {
+                alert('please Enter a Valid Data');
+            }
+            else{
+
+                if(resp.password== "admin"&&resp.password==password)
+                {
+                    alert('You are Admin.');
+                    window.sessionStorage.setItem('admin',"admin");
+                    
+                    navigate('/about');
+                }
+                if( resp.password === password&&resp.password!="admin")
+                {
+                 alert('You are Employee.')
+                    window.sessionStorage.setItem('email',email);
+
+                 navigate('/employeedash')
+
+                }
+             }
+ 
+             //alert('Saved successfully.')
+             emailchange("")
+             passwordchange("")
+
+
+
+
+          }).catch((err)=>{
+            console.log(err.message)
+            alert('Erorr in Email or Password.')
+          })
+
+        }
+
+
+
+        console.log(email,password);
+
+        
+
     }
 
     return(

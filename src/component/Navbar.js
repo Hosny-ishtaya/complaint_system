@@ -11,8 +11,9 @@ const Navbar=()=>{
             <lii><a href="/">Home</a></lii>
             <lii><a href="/about">Admin</a></lii>
             <lii><a href="/employeedash">Employee</a></lii>
-            <lii><a href="/contact">Contact Us</a></lii>
-            <lii><a className="log" href="/signin">Login</a></lii>
+            {/* <lii><a href="/contact">Contact Us</a></lii> */}
+            <lii><a className="log" href="/signin">Log In</a></lii>
+            <lii><a className="log" href="/">Log Out</a></lii>
             
         </ull>
     </div> 

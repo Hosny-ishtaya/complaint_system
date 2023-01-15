@@ -1,45 +1,21 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate,useParams } from "react-router-dom";
-import Complaint_Details from './Complaint_Details';
 
 
-const Complaint_grocery = () => {
+
+const Allcomplaints = () => {
     
     const [complaindata, complainchange] = useState(null);
      const navigate = useNavigate();
 
-    const loadDetail = (id) => {
-        navigate("/employeedash/pagec4/" + id);
 
-    }
-    const Editfunction = (id) => {
-        navigate("/employeedash/editgcomplaint/" + id);
-    }
-    const Removefunction = (id) => {
-        if (window.confirm('Do you want to remove?')) {
-            fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/deleteComplaint?idc=` + id, {
-                method: "DELETE"
-            }).then((res) => {
-                alert('Removed successfully.')
-                window.location.reload();
-            }).catch((err) => {
-                console.log(err.message)
-            })
-        }
-    }
-
-
-
-    const {comtid} = useParams();
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/getallcomplaint?id=`+comtid).then((res) => {
+        fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/getAllComplaint`).then((res) => {
             return res.json();
         }).then((resp) => {
 
             complainchange(resp);
-            console.log(resp.customer_id);
-            console.log(resp);
         }).catch((err) => {
             console.log(err.message);
         })
@@ -60,8 +36,7 @@ const Complaint_grocery = () => {
                                 <td>description</td>
                                 <td>location company</td>
                                 <td>Customer_id</td>
-                                <td>Status</td>
-                                <td>Action</td>
+                                {/* <td>Action</td> */}
                                 
                             </tr>
                         </thead>
@@ -75,13 +50,14 @@ const Complaint_grocery = () => {
                                         <td>{item.description}</td>
                                         <td>{item.location}</td>
                                         <td>{item.customer_id}</td>
-                                        <td>{item.status}</td>
-                                        <td>
-                                            <a onClick={() => {  Editfunction(item.id_of_complaint) }}  className="btn btn-success">Update Status</a>
-                                            <a onClick={() => { Removefunction(item.id_of_complaint) }}  className="btn btn-danger">Remove</a>
+
+                                        
+                                            {/* <a onClick={() => {  Editfunction(item.id_of_complaint) }}  className="btn btn-success">Update Status</a> */}
+                                            {/* <a onClick={() => { Removefunction(item.id_of_complaint) }}  className="btn btn-danger">Remove</a> */}
                                             {/* <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a> */}
-                                            <a onClick={() => {  loadDetail(item.id_of_complaint) }} className="btn btn-primary">Details</a>
-                                        </td>
+                                            {/* <a onClick={() => {  loadDetail(item.id_of_complaint) }} className="btn btn-primary">Details</a> */}
+                                        
+
                                     </tr>
                                 ))
                             }
@@ -95,4 +71,4 @@ const Complaint_grocery = () => {
     );
 }
 
-export default Complaint_grocery;
+export default Allcomplaints;

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EmployeeDashTitle from './EmplooyeeDashTitle'
 import CompanyList from '../Company/CompanyList';
 import AddCompany from '../Company/AddCompany';
 import EditCompany from '../Company/EditCompany';
 import Complaint_grocery  from '../Complaint/Grocery_store_complaint'
 import Complaint_Details from '../Complaint/Complaint_Details';
+import CustemerList from '../Custemer/CustemerList';
 import Editcomplaint from '../Complaint/Editcomplaint'
 import AddEmployee from '../Login/AddEmployee';
 import EmployeeList from '../Employee/EmployeeList';
@@ -31,17 +32,32 @@ function getItem(label, key, icon, children) {
 }
 const items = [
   getItem('Company', '/employeedash/company', <UserOutlined  />),
-  getItem('Complain', '/employeedash/complain', <UserOutlined />, [
-    getItem('cleaning product', '/employeedash/pagec1'),
-    getItem('cosmatics', '/employeedash/pagec2'),
-    getItem('Pharmaceuticals', '/employeedash/pagec3'),
-    getItem('Grocery Store', '/employeedash/pagec4'),
-  ]),
+  getItem('All Customer', '/employeedash/customer', <UserOutlined  />),
+  // getItem('Complain', '/employeedash/complain', <UserOutlined />, [
+  //   getItem('cleaning product', '/employeedash/pagec1'),
+  //   getItem('cosmatics', '/employeedash/pagec2'),
+  //   getItem('Pharmaceuticals', '/employeedash/pagec3'),
+  //   getItem('Grocery Store', '/employeedash/pagec4'),
+  // ]),
   getItem('Sign out', '/', <FileOutlined />),
 ];
 const EmployeeDash = () => {
 
    const navigate =useNavigate()
+
+   useEffect(()=>{
+
+    let email=window.sessionStorage.getItem('email');
+
+    console.log('the',email);
+    if(email===''||email===null)
+    {
+      navigate('/signin');
+    }
+
+
+
+   },[]);
 
   const [collapsed, setCollapsed] = useState(false);
   // const {
@@ -111,16 +127,17 @@ const EmployeeDash = () => {
 
     return <div>   
                <Routes>
-                     <Route path="/" element={<div>home employee</div>}/>
+                     <Route path="/" element={<h1 className='text-center'>Wellcome Employee</h1>}/>
                      <Route path="/company" element={<CompanyList/>}/>
+                     <Route path="/customer" element={<CustemerList/>}/>
                      <Route path="/addcompany" element={<AddCompany/>}/> 
                      <Route path="/pagec1" element={<EmployeeDetail/>}/>
                      <Route path="/editecompany/:commpid"  element={<EditCompany/>}/>
-                     {/* <Route path="/complaintcompany/:commpid"  element={<div>compalints</div>}/> */}
                      <Route path="/pagec3" element={<div>pagec3</div>}/>
                      <Route path="/pagec4" element={<Complaint_grocery/>}/> 
+                     <Route path="/complaintcompany/:comtid" element={<Complaint_grocery/>}/>
                      <Route path="/pagec4/:comid" element={<Complaint_Details/>}/>
-                     <Route path="/editgcomplaint/:comid" element={<Editcomplaint/>}/>                
+                     <Route path="/editgcomplaint/:idcom" element={<Editcomplaint/>}/>                
                </Routes>
 
        </div>
