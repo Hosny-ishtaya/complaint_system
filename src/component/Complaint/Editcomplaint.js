@@ -14,14 +14,18 @@ const EditCompany=()=>{
     const [description,descriptionchange]=useState("");
     const [location,locationchange]=useState("");
     const [company_id,company_idchange]=useState("");
-    const [customer_id,customer_idchange]=useState("");
+    const [customer_id,customer_idchange]=useState();
     const [companyName,companyNamechange]=useState("");
     const [status,statuschange]=useState("");
+    const [theemail,emailchange]=useState("");
 
     
     
 
     const { idcom } = useParams();
+
+    // let idd;
+    // let emailll;
     //-----------------
     
     
@@ -29,7 +33,7 @@ const EditCompany=()=>{
     //const [empdata, empdatachange] = useState({});
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/getComplaintById?id=` + idcom).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/getComplaintById?id=` + idcom).then((res) => {
             return res.json();
         }).then((resp) => {
             idcomplaintchange(resp.id_of_complaint);
@@ -40,19 +44,36 @@ const EditCompany=()=>{
             customer_idchange(resp.customer_id);
             companyNamechange(resp.companyName);
             statuschange(resp.status);
+        
+
+            
+
+            // idd=resp.customer_id;
+
+            
+
+           
 
         }).catch((err) => {
             console.log(err.message);
         })
+
+
+
+
+
     }, []);
 
    
     const navigate=useNavigate();
 
     const handlesubmit=(e)=>{
-      e.preventDefault();      
+      e.preventDefault(); 
+      
+    
 
-      fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/editStatusOfComplaint`,{
+
+      fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/editStatusOfComplaint`,{
         method:"PUT",
         headers:{"content-type":"application/json"},
         body:JSON.stringify({
@@ -71,6 +92,42 @@ const EditCompany=()=>{
       }).catch((err)=>{
         console.log(err.message)
       })
+
+
+
+      fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/getCustomerById?id=`+customer_id).then((res) => {
+        return res.json();
+    }).then((resp) => {
+
+        emailchange(resp.email)
+        
+
+        
+      fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/notifyCustomer`,{
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify({
+            "email":resp.email,
+            "status": status,
+            "status": companyName,
+          })
+      }).then((res)=>{
+       
+        alert('send notify.')
+        navigate('/employeedash/company');
+      }).catch((err)=>{
+        console.log(err.message)
+      })
+
+        
+        
+
+    }).catch((err) => {
+        console.log(err.message);
+    })
+      
+      console.log("cusmid",customer_id)
+
 
     }
     

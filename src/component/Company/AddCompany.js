@@ -21,7 +21,7 @@ const AddCompany=()=>{
       //  console.log({id,name,email,phone,password,rpassword});
       const empdata={name,type_company,locations,ratting_status};
 
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/addCompany`,{
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/addCompany`,{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify(empdata)

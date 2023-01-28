@@ -4,6 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 const CompanyList = () => {
     const [compdata, compdatachange] = useState(null);
+    const [search,changesearch]=useState();
+
+    console.log(search)
      const navigate = useNavigate();
 
     const LoadComplaint = (id) => {
@@ -14,7 +17,7 @@ const CompanyList = () => {
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/deleteCompany?idC=` + id, {
+            fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/deleteCompany?idC=` + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
@@ -29,13 +32,13 @@ const CompanyList = () => {
 
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/getAllComp`).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/admin/getAllComp`).then((res) => {
             return res.json();
         }).then((resp) => {
 
             compdatachange(resp);
             console.log(resp);
-        }).catch((err) => {
+        }).catch((err) => { 
             console.log(err.message);
         })
     }, [])
@@ -49,6 +52,18 @@ const CompanyList = () => {
                     <div className="divbtn">
                         <Link to="/employeedash/addcompany" className="btn btn-success">Add Company</Link>
                     </div>
+                    <form>
+                     {/* company name  */}
+                       
+                                <label htmlFor="name">
+
+                                    {/* <i className="zmdi zmdi-crop-din matirial-icons-name"></i> */}
+
+                                </label>
+                                <input value={search}  onChange={e=>changesearch(e.target.value)} type="text" name="scompany" id="scompany" autoComplete="off" placeholder="Search company"></input>
+
+                            
+                    </form>
                     <table className="table table-bordered">
                         <thead className="bg-dark text-white">
                             <tr>
@@ -62,7 +77,13 @@ const CompanyList = () => {
                             </tr>
                         </thead>
                         <tbody>
-
+                        {/* .filter(
+                                    (item)=>{
+                                        return search.toLowerCase()==='' ? item:item.name.toLowerCase().includes(search);
+                                    }
+                                    
+                                ) */}
+                                
                             {compdata &&
                                 compdata.map(item => (
                                     <tr key={item.id}>

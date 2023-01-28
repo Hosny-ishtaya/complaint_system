@@ -7,6 +7,8 @@ import Complaint_grocery  from '../Complaint/Grocery_store_complaint'
 import Complaint_Details from '../Complaint/Complaint_Details';
 import CustemerList from '../Custemer/CustemerList';
 import Editcomplaint from '../Complaint/Editcomplaint'
+import Chart from '../Admin/Chart'
+import StatisticChart from '../Employee/Statisticcom'
 import AddEmployee from '../Login/AddEmployee';
 import EmployeeList from '../Employee/EmployeeList';
 
@@ -30,9 +32,13 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
+
+var countemployee;
 const items = [
+  // getItem(''+countemployee, '', <companyOutlined  />),
   getItem('Company', '/employeedash/company', <UserOutlined  />),
   getItem('All Customer', '/employeedash/customer', <UserOutlined  />),
+  getItem('Statistic Complaint', '/employeedash/statistic', <UserOutlined  />),
   // getItem('Complain', '/employeedash/complain', <UserOutlined />, [
   //   getItem('cleaning product', '/employeedash/pagec1'),
   //   getItem('cosmatics', '/employeedash/pagec2'),
@@ -48,6 +54,9 @@ const EmployeeDash = () => {
    useEffect(()=>{
 
     let email=window.sessionStorage.getItem('email');
+    countemployee =window.sessionStorage.getItem('counte');
+
+    console.log("the",countemployee);
 
     console.log('the',email);
     if(email===''||email===null)
@@ -127,8 +136,9 @@ const EmployeeDash = () => {
 
     return <div>   
                <Routes>
-                     <Route path="/" element={<h1 className='text-center'>Wellcome Employee</h1>}/>
+                     <Route path="/" element={<Chart/>}/>
                      <Route path="/company" element={<CompanyList/>}/>
+                     <Route path="/statistic" element={<StatisticChart/>}/>
                      <Route path="/customer" element={<CustemerList/>}/>
                      <Route path="/addcompany" element={<AddCompany/>}/> 
                      <Route path="/pagec1" element={<EmployeeDetail/>}/>

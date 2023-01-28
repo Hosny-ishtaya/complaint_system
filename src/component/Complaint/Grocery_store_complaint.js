@@ -17,7 +17,7 @@ const Complaint_grocery = () => {
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/deleteComplaint?idc=` + id, {
+            fetch(`http://`+window.ip+`:9090/api/complaintsystem/admin/deleteComplaint?idc=` + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
@@ -33,7 +33,7 @@ const Complaint_grocery = () => {
     const {comtid} = useParams();
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/getallcomplaint?id=`+comtid).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/getallcomplaint?id=`+comtid).then((res) => {
             return res.json();
         }).then((resp) => {
 
@@ -80,7 +80,7 @@ const Complaint_grocery = () => {
                                             <a onClick={() => {  Editfunction(item.id_of_complaint) }}  className="btn btn-success">Update Status</a>
                                             <a onClick={() => { Removefunction(item.id_of_complaint) }}  className="btn btn-danger">Remove</a>
                                             {/* <a onClick={() => { LoadDetail(item.id) }} className="btn btn-primary">Details</a> */}
-                                            <a onClick={() => {  loadDetail(item.id_of_complaint) }} className="btn btn-primary">Details</a>
+                                            <a onClick={() => {  loadDetail(item.customer_id) }} className="btn btn-primary">Details Customer</a>
                                         </td>
                                     </tr>
                                 ))

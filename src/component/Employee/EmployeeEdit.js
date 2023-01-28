@@ -22,7 +22,7 @@ const EmployeeEdit =()=>{
     const [empdata, empdatachange] = useState({});
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/getEmployeeById?Social=` + empid).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/getEmployeeById?Social=` + empid).then((res) => {
             return res.json();
         }).then((resp) => {
             namechange(resp.username);
@@ -47,7 +47,7 @@ const EmployeeEdit =()=>{
       const empdata={username,phone,address,email,password,social_number};
       
 
-      fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/editEmployee`,{
+      fetch(`http://`+window.ip+`:9090/api/complaintsystem/admin/editEmployee`,{
         method:"PUT",
         headers:{"content-type":"application/json"},
         body:JSON.stringify(empdata)

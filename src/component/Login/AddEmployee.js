@@ -20,7 +20,7 @@ const AddEmployee=()=>{
       //  console.log({id,name,email,phone,password,rpassword});
       const empdata={username,phone,address,email,password,social_number};
 
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/registerEmployee`,{
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/registerEmployee`,{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({

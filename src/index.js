@@ -8,6 +8,7 @@ import './css/HomeSectionone.css'
 import './css/signin.css'
 import './css/Footer.css'
 import './css/signup.css'
+window.ip="192.168.1.124";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

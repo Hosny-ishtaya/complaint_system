@@ -11,7 +11,7 @@ const Allcomplaints = () => {
 
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/getAllComplaint`).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/admin/getAllComplaint`).then((res) => {
             return res.json();
         }).then((resp) => {
 

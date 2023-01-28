@@ -22,7 +22,7 @@ const EditCompany=()=>{
     //const [empdata, empdatachange] = useState({});
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/getCompanyById?id=` + commpid).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/getCompanyById?id=` + commpid).then((res) => {
             return res.json();
         }).then((resp) => {
             companynamechange(resp.name);

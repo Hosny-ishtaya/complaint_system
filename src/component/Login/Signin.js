@@ -50,7 +50,7 @@ const Signin=()=>{
         {
 
             
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/employee/signIn`,{
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/signIn`,{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({

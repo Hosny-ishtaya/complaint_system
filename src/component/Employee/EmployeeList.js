@@ -14,7 +14,7 @@ const EmployeeList = () => {
     }
     const Removefunction = (id) => {
         if (window.confirm('Do you want to remove?')) {
-            fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/deleteEmployee?ide=` + id, {
+            fetch(`http://`+window.ip+`:9090/api/complaintsystem/admin/deleteEmployee?ide=` + id, {
                 method: "DELETE"
             }).then((res) => {
                 alert('Removed successfully.')
@@ -29,7 +29,7 @@ const EmployeeList = () => {
 
 
     useEffect(() => {
-        fetch(`http://192.168.1.114:9090/api/complaintsystem/admin/getAllEmployee`).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/admin/getAllEmployee`).then((res) => {
             return res.json();
         }).then((resp) => {
 

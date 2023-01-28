@@ -16,6 +16,7 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import EmployeeEdit from '../Employee/EmployeeEdit';
 import EmployeeDetail from '../Employee/EmployeeDetail';
 import Allcomplaints from './Allcomplaints';
+import Chart from './Chart';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -124,7 +125,7 @@ const Dash = () => {
 
     return <div>   
                <Routes>
-                     <Route path="/" element={<h1 className='text-center'>Wellcome Admin</h1>}/> 
+                     <Route path="/" element={<Chart/>}/> 
                      <Route path="/addemployee" element={<AddEmployee/>}/>
                      <Route path="/employeelist" element={<EmployeeList/>}/>
                      <Route path="/edite/:empid" element={<EmployeeEdit/>}/>

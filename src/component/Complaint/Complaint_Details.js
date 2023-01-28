@@ -5,18 +5,33 @@ import { useParams } from "react-router-dom";
 const Complaint_Details = () => {
 
     const {comid}=useParams();
-    const [comdata,compdatachange]=useState(null);
+    const navigate = useNavigate();
+    const loadDetail = (id) => {
+        navigate("/employeedash/company");
+
+    }
+    const [customerpdata, customerchange] = useState(null);
+    const [social_numbe, social_numbechange] = useState(null);
+    // const [namec,namecchange]=useState(null);
+    // const [emailc,emailcchange]=useState(null);
+    // const [phonec,phonecchange]=useState(null);
+    // const [addressc,addresscchange]=useState(null);
 
     
     useEffect(() => {
 
         
 
-        fetch("http://localhost:8000/complaint/"+comid).then((res) => {
+        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/getCustomerById?id=`+comid).then((res) => {
             return res.json();
         }).then((resp) => {
-
-            compdatachange(resp);
+            customerchange(resp);
+            social_numbechange(resp.social_number);
+            // namecchange(resp.name);
+            // emailcchange(resp.type_company);
+            // phonecchange(resp.locations);
+            // ratechange(resp.ratting_status);
+            // addresscchange(resp.id);
             console.log(resp);
         }).catch((err) => {
             console.log(err.message);
@@ -28,16 +43,19 @@ const Complaint_Details = () => {
 
             <div className="card" style={{textAlign:"left"}}>
                 <div className="card-title">
-                    <h2>Complaint Details:</h2>
+                    <h2>Custemer Details:</h2>
                 </div>
 
                 <div className="card-body"></div>
            
-            { comdata && 
+            { customerpdata && 
                 <div>
-                       <h2>Name of company is :{comdata.namecompany}</h2>
-                       <h3>description of complaint  :{comdata.description}</h3>
-                       <Link className="btn btn-danger" to="/employeedash/pagec4">Back</Link>
+                       <h3>-Name    of Custemer:({customerpdata.username})</h3>
+                       <h3>-Email   of Custemer:({customerpdata.email})</h3>
+                       <h3>-Phone   of Custemer:({customerpdata.phone})</h3>
+                       <h3>-Address of Custemer:({customerpdata.address})</h3>
+                       <h3>-Id      of Custemer:({customerpdata.social_number})</h3>
+                       <a onClick={() => {  loadDetail(customerpdata.social_number) }} className="btn btn-primary">Back</a>
                 </div>
              }
             </div>
