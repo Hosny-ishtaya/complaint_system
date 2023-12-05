@@ -1,8 +1,9 @@
 import React, {useEffect, useState } from 'react';
-import AddEmployee from '../Login/AddEmployee';
-import EmployeeList from '../Employee/EmployeeList';
+import AddEmployee from '../Login/Signup';
+import FarmerList from '../Employee/FarmerList';
 import AdminDashTitle from './AdminDashTitle';
 import CustemerList from '../Custemer/CustemerList';
+import AddChalet from '../Company/AddChalet';
 
 import {BrowserRouter,Route,Routes,useNavigate} from 'react-router-dom';
 import {
@@ -16,7 +17,8 @@ import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import EmployeeEdit from '../Employee/EmployeeEdit';
 import EmployeeDetail from '../Employee/EmployeeDetail';
 import Allcomplaints from './Allcomplaints';
-import Chart from './Chart';
+import AddFarmer from '../Employee/AddFarmer';
+// import Chart from './Chart';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -27,8 +29,10 @@ function getItem(label, key, icon, children) {
   };
 }
 const items = [
-  getItem('Employee', '/about/employeelist', <UserOutlined  />),
-  getItem('Custemer', '/about/custemerlist', <DesktopOutlined />),
+  getItem('تسجيل مشترك مزرعه', '/about/addcompany', <DesktopOutlined />),
+  getItem('تسجيل مزرعة', '/about/addfarmer', <UserOutlined  />),
+  getItem('مشتركين المزارع', '/about/employeelist', <UserOutlined  />),
+  getItem('المزارع', '/about/custemerlist', <DesktopOutlined />),
   getItem('All Complaint', '/about/allcomplaint', <DesktopOutlined />),
   // getItem('User', 'sub1', <UserOutlined />, [
   //   getItem('Tom', '/about/page3'),
@@ -42,19 +46,19 @@ const Dash = () => {
 
    const navigate =useNavigate()
 
-   useEffect(()=>{
+  //  useEffect(()=>{
 
-    let admin=window.sessionStorage.getItem('admin');
+  //   let admin=window.sessionStorage.getItem('admin');
 
-    console.log('ttthhh',admin)
-    if(admin===''||admin===null)
-    {
-      navigate('/signin');
-    }
+  //   console.log('ttthhh',admin)
+  //   if(admin===''||admin===null)
+  //   {
+  //     navigate('/signin');
+  //   }
 
 
 
-   },[]);
+  //  },[]);
 
   const [collapsed, setCollapsed] = useState(false);
   // const {
@@ -64,20 +68,25 @@ const Dash = () => {
     <Layout
       style={{
         minHeight: '100vh',
+        background:'rgba(183, 183, 138,250 )',
+        
       }}
     >
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
+      <Sider style={{
+            background: 'rgba(101, 136, 100,250)',
+            
+          }}collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
 
       <AdminDashTitle/>
         <div
           style={{
             height: 5,
             margin: 10,
-            background: 'rgba(255, 255, 255, 0.2)',
+            background: 'rgba(183, 183, 138,250)',
             
           }}
         />
-        <Menu  onClick={({key})=>{
+        <Menu   onClick={({key})=>{
           if(key=="signout"){
 
           }
@@ -86,15 +95,22 @@ const Dash = () => {
             navigate(key)
 
           }
-        }} theme="dark" defaultSelectedKeys={['sub1']} mode="inline" items={items} />
+        }} theme="dark" defaultSelectedKeys={['sub1']} mode="inline" items={items}  style={{
+          
+          background:'rgba(101, 136, 100,250)',
+          fontSize:18,
+          fontFamily:300,
+          
+          
+        }}/>
       </Sider>
       <Layout className="site-layout">
-        <Header
+        {/* <Header
           style={{
             padding: 0,
-            background: 'rgba(255, 255, 255, 0)',
+            background: 'rgba(100, 200, 138, 0)',
           }}
-        />
+        /> */}
         <Content
           style={{
             margin: '0 16px',
@@ -102,9 +118,9 @@ const Dash = () => {
         >
           <div
             style={{
-              padding: 24,
+              padding: 10,
               minHeight: 360,
-              background:'rgba(255, 255, 255,2 )',
+              background:'rgba(183, 183, 138,250 )',
             }}
           >
           
@@ -125,13 +141,15 @@ const Dash = () => {
 
     return <div>   
                <Routes>
-                     <Route path="/" element={<Chart/>}/> 
+                     {/* <Route path="/" element={<Chart/>}/>  */}
+                     <Route path="/addfarmer" element={<AddFarmer/>}/>
                      <Route path="/addemployee" element={<AddEmployee/>}/>
-                     <Route path="/employeelist" element={<EmployeeList/>}/>
+                     <Route path="/employeelist" element={<FarmerList/>}/>
                      <Route path="/edite/:empid" element={<EmployeeEdit/>}/>
                      <Route path="/detail/:empid" element={<EmployeeDetail/>}/>
                      <Route path="/custemerlist" element={<CustemerList/>}/>
                      <Route path="/allcomplaint" element={<Allcomplaints/>}/>
+                     <Route path="/addcompany" element={<AddChalet/>}/> 
                      <Route path="/page4" element={<div>page4</div>}/>              
                </Routes>
 

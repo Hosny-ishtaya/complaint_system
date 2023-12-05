@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import image from '../../image/employeee.png';
+import image from '../../image/signup.png';
 import { NavLink } from "react-router-dom";
 import Password from "antd/lib/input/Password";
 
 
 
-const AddEmployee=()=>{
+const Signup=()=>{
 
     const [social_number,idchange]=useState("");
     const [username,namechange]=useState("");
@@ -16,38 +16,38 @@ const AddEmployee=()=>{
     const [validation,valchange]=useState("");
 
     const handlesubmit=(e)=>{
-        e.preventDefault();
-      //  console.log({id,name,email,phone,password,rpassword});
-      const empdata={username,phone,address,email,password,social_number};
+    //     e.preventDefault();
+    //   //  console.log({id,name,email,phone,password,rpassword});
+    //   const empdata={username,phone,address,email,password,social_number};
 
-        fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/registerEmployee`,{
-            method:"POST",
-            headers:{"content-type":"application/json"},
-            body:JSON.stringify({
+    //     fetch(`http://`+window.ip+`:9090/api/complaintsystem/employee/registerEmployee`,{
+    //         method:"POST",
+    //         headers:{"content-type":"application/json"},
+    //         body:JSON.stringify({
 
-                "username":username,
-                "phone":phone,
-                "address":address,
-                "email":email,
-                "password":password,
-                "social_number":social_number                
-            }),
-            redirect:'follow'
-          }).then((res)=>{
-            alert('Saved successfully.')
-            namechange("")
-            idchange("")
-            emailchange("")
-            phonechange("")
-            passwordchange("")
-            addresschange("")
+    //             "username":username,
+    //             "phone":phone,
+    //             "address":address,
+    //             "email":email,
+    //             "password":password,
+    //             "social_number":social_number                
+    //         }),
+    //         redirect:'follow'
+    //       }).then((res)=>{
+    //         alert('Saved successfully.')
+    //         namechange("")
+    //         idchange("")
+    //         emailchange("")
+    //         phonechange("")
+    //         passwordchange("")
+    //         addresschange("")
            
             
 
             
-          }).catch((err)=>{
-            console.log(err.message)
-          })
+    //       }).catch((err)=>{
+    //         console.log(err.message)
+    //       })
     
         }
 
@@ -59,7 +59,7 @@ const AddEmployee=()=>{
             <div className="container mt-5" >
                 <div className="signup-content">
                     <div className="signup-form">
-                        <h2 className="form-title">Add Employee</h2>
+                        <h2 className="form-title">تسجيل  حساب  جديد</h2>
                         <form className="register-form" id="register-form" onSubmit={handlesubmit}>
                             {/* User name  */}
                             <div className="form-group">
@@ -94,24 +94,24 @@ const AddEmployee=()=>{
                             </div>
                             {/* { phone.length==0 && validation && <span className="text-danger">Enter your phone</span>} */}
                             {/* ID  */}
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label htmlFor="id">
 
                                     <i className="zmdi zmdi-account matirial-icons-name"></i>
 
                                 </label>
                                 <input value={social_number} onMouseDown={e=>valchange(true)} onChange={e=>idchange(e.target.value)} type="text" name="id" id="id" autoComplete="off" placeholder="Your ID"></input>
-                            </div>
+                            </div> */}
                             {/* { id.length==0 && validation && <span className="text-danger">Enter your Id</span>} */}
 
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <label htmlFor="address">
 
                                     <i className="zmdi zmdi-email matirial-icons-name"></i>
 
                                 </label>
                                 <input value={address} onMouseDown={e=>valchange(true)} onChange={e=>addresschange(e.target.value)} type="text" name="address" id="adress" autoComplete="off" placeholder="Your Address"></input>
-                            </div>
+                            </div> */}
 
                             {/* password  */}
                             <div className="form-group">
@@ -126,7 +126,7 @@ const AddEmployee=()=>{
                             {/* submit button  */}
                             <div className="form-button">
 
-                                <input type="submit" name="signup" id="signup" classname="form-submit" value="Add"/>
+                                <input type="submit" name="signup" id="signup" classname="form-submit" value="التسجيل"/>
 
 
                             </div>
@@ -141,7 +141,7 @@ const AddEmployee=()=>{
                                         
  
                                      </figure>  
-                                     {/* <NavLink to="/signin" className="signin-image-link">Iam already register</NavLink> */}
+                                     <NavLink to="/signin" className="signin-image-link">تسجيل دخول</NavLink>
                        </div>
             </div>
         </div>
@@ -157,4 +157,4 @@ const AddEmployee=()=>{
 
     )
 }
-export default AddEmployee;
+export default Signup;

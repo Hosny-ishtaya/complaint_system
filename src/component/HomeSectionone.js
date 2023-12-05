@@ -1,29 +1,39 @@
 import React from "react";
-import image from '../image/wp1.png'
-
+import image from '../image/real-estate.png'
+import Place from "./Choose_Place/Place";
+import Footer from "./Footer";
 
 const HomeSectionone=()=>{
-    return(
-        
 
+    const goDown=()=>{
+
+        window.scrollTo(0, document.body.scrollHeight);
+
+    }
+
+    return(
+
+
+        <div className="Parent-home">
+
+        
+            <div className="sec1">
              <div className="container grid grid-two-column" >
 
                 <div className="data-section">
-                    <p  className="Top-data">This is me</p>
-                    <h1 className="head-data">Consumer Protection Association</h1>
-                    <p  className="All-data">The Consumer Protection Association is an association that aims
-                     to protect the consumer from all the problems
-                     that the consumer faces in the products he purchases or deals with,
-                      by referring to them in all complaints.
-                    </p>
+                    {/* <p  className="Top-data">This is me</p> */}
+                    <h1 className="head-data">مَزْرَعَتي</h1>
+                    <p  className="All-data">  ابحث عن المزرعة التي تناسبك فقط بنقرة زر , يمكنك الاطلاع على جميع الشليهات المتوفره مع تفاصيلها كامله والميزات التي يمتلكها ومن ثم البدء باجراءات الحجز</p>
                     <div className="btnn">
+
+                    <i class="zmdi zmdi-arrow-left"></i>
                     <button className="btn-comp">
 
-                        <a href="/about">Lets Start Now!</a>   
+                        <a href="/chalets">احجز هناا</a>   
 
                     </button>
 
-                          <i class="zmdi zmdi-arrow-right"></i>
+                          
 
                     </div>
 
@@ -38,6 +48,14 @@ const HomeSectionone=()=>{
 
 
 
+
+            </div>
+            </div>
+           <div className="sec2">
+           <Place/>
+           </div>
+            
+            <Footer/>
 
             </div>
      

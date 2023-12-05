@@ -1,5 +1,5 @@
 import React , { useEffect, useState }from "react";
-import image from '../../image/login.png';
+import image from '../../image/contactus.png';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
@@ -9,10 +9,11 @@ import { NavLink } from "react-router-dom";
 import 'material-icons/iconfont/material-icons.css';
 
 
-const Signin=()=>{
+const Contactus=()=>{
 
     const [email,emailchange]=useState("");
-    const [password,passwordchange]=useState("");
+    const [username,namechange]=useState("");
+    const [message,messagechange]=useState("");
 
     // const navigate = useNavigate();
 
@@ -115,13 +116,25 @@ const Signin=()=>{
 
     return(
         <>
-        <section className="signin">
+        <section className="Signup">
             <div className="containerr mt-5" >
-                <div className="signin-content">
-                    <div className="signin-form">
-                        <h2 className="form-title">تسجيل دخول</h2>
+                <div className="signup-content">
+                    <div className="signup-form">
+                        <h2 className="form-title">تواصل معنا</h2>
                         <form className="register-form" id="register-form" onSubmit={handlesubmit}>
 
+
+                            {/* User name  */}
+                            <div className="form-group">
+                                <label htmlFor="name">
+
+                                    <i className="zmdi zmdi-account matirial-icons-name"></i>
+
+                                </label>
+                                <input value={username} onChange={e=>namechange(e.target.value)} type="text" name="name" id="name" autoComplete="off" placeholder="الاسم الكامل"></input>
+
+                            </div>
+                           
                            {/* Email */}
                             <div className="form-group">
                                 <label htmlFor="email">
@@ -129,28 +142,21 @@ const Signin=()=>{
                                     <i className="zmdi zmdi-email matirial-icons-name"></i>
 
                                 </label>
-                                <input value={email} onChange={e=>emailchange(e.target.value)} type="text" name="email" id="email" autoComplete="off" placeholder="Your Email"></input>
+                                <input value={email} onChange={e=>emailchange(e.target.value)} type="text" name="email" id="email" autoComplete="off" placeholder="االبريد الالكتروني"></input>
                             </div>
-                            {/* password  */}
-                            <div className="form-group">
-                                <label htmlFor="password">
+                            <div className="form-grou">
+                                <label htmlFor="message">
 
-                                    <i className="zmdi zmdi-lock matirial-icons-name"></i>
+                                    <i className="zmdi zmdi-email matirial-icons-name"></i>
 
                                 </label>
-                                <input value={password} onChange={e=>passwordchange(e.target.value)} type="password" name="password" id="password" autoComplete="off" placeholder="Your password"></input>
-                            </div >
-                                {/* select user  */}
-                            <div className="sell">
-                                <span> مستأجر &nbsp;&nbsp;<input value={password} onChange={e => passwordchange(e.target.value)} type="checkbox" name="checkpoint" id="checkpoint"/></span>
-                                <span>مؤجر&nbsp;&nbsp;</span><input value={password} onChange={e => passwordchange(e.target.value)} type="checkbox" name="checkpoint2" id="checkpoint2"/>
+                                <textarea value={message} onChange={e=>messagechange(e.target.value)} type="text" name="message" id="message" autoComplete="off" placeholder="الرسالة"></textarea>
                             </div>
-                            <NavLink to="/signup">هل نسيت كلمة المرور ؟</NavLink>
 
                             {/* submit button  */}
                             <div className="form-button">
 
-                                <input type="submit" name="signin" id="signin" classname="form-submit" value="الدخول"/>
+                                <input type="submit" name="signin" id="signin" classname="form-submit" value="ارسال "/>
 
 
                             </div>
@@ -167,7 +173,7 @@ const Signin=()=>{
 
                             
                                 </figure>  
-                                <NavLink to="/Signup" className="signin-image-link">تسجيل حساب جديد</NavLink>
+                                {/* <NavLink to="/Signup" className="signin-image-link">تسجيل حساب جديد</NavLink> */}
 
                                  {/* <p className="title-page">Sign in Portal</p> */}
                                                         
@@ -186,4 +192,4 @@ const Signin=()=>{
 
     )
 }
-export default Signin;
+export default Contactus;

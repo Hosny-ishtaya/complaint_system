@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import EmployeeDashTitle from './EmplooyeeDashTitle'
 import CompanyList from '../Company/CompanyList';
-import AddCompany from '../Company/AddCompany';
+import AddChalet from '../Company/AddChalet';
 import EditCompany from '../Company/EditCompany';
 import Complaint_grocery  from '../Complaint/Grocery_store_complaint'
 import Complaint_Details from '../Complaint/Complaint_Details';
@@ -9,8 +9,8 @@ import CustemerList from '../Custemer/CustemerList';
 import Editcomplaint from '../Complaint/Editcomplaint'
 import Chart from '../Admin/Chart'
 import StatisticChart from '../Employee/Statisticcom'
-import AddEmployee from '../Login/AddEmployee';
-import EmployeeList from '../Employee/EmployeeList';
+import AddEmployee from '../Login/Signup';
+// import EmployeeList from '../Employee/EmployeeList';
 
 import {BrowserRouter,Route,Routes,useNavigate} from 'react-router-dom';
 import {
@@ -140,7 +140,7 @@ const EmployeeDash = () => {
                      <Route path="/company" element={<CompanyList/>}/>
                      <Route path="/statistic" element={<StatisticChart/>}/>
                      <Route path="/customer" element={<CustemerList/>}/>
-                     <Route path="/addcompany" element={<AddCompany/>}/> 
+                     <Route path="/addcompany" element={<AddChalet/>}/> 
                      <Route path="/pagec1" element={<EmployeeDetail/>}/>
                      <Route path="/editecompany/:commpid"  element={<EditCompany/>}/>
                      <Route path="/pagec3" element={<div>pagec3</div>}/>

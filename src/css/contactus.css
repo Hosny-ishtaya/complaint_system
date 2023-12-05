@@ -1,0 +1,21 @@
+.contactus-content{
+   
+    position:relative;
+    display: flex;
+    margin: auto; 
+    height: 500px; 
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px lightblue;
+    align-content: center;
+    justify-content: center;   
+  
+    width: 800px;
+    margin-top: 0px;
+    padding-top: 100px;
+}
+.contactus-form{
+    height: 600px;
+    width:  400px;
+    margin-top: -40px;
+    margin-left: 35px;
+}

@@ -8,14 +8,17 @@ import About from './component/About';
 import Service from './component/Service';
 import Contact from './component/Contact';
 
-import AddEmployee from './component/Login/AddEmployee';
+import Signup from './component/Login/Signup';
 import Signin from './component/Login/Signin';
 import Dash from './component/Admin/dash';
 import 'antd/dist/antd.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import EmployeeDash from './component/EmployeeDash/EmployeeDash';
 import 'semantic-ui-css/semantic.min.css'
-
+import Contactus from './component/Login/Contactus'
+import Place from './component/Choose_Place/Place';
+import HomeSectionone from './component/HomeSectionone';
+import ChaletList from './component/Chalets/listChalets';
 
 
 class App extends Component {  
@@ -27,11 +30,14 @@ class App extends Component {
            <div className='App'>
            <Navbar/> 
                <Routes>
-                    <Route path="/" element={<Home/>}/>
+                    <Route path="/" element={<HomeSectionone/>}/>
                     <Route path="/about/*" element={<Dash/>}/>
                     <Route path="/employeedash/*" element={<EmployeeDash/>}/>
-                    {/* <Route path="/signup" element={<Signup/>}/> */}
+                    <Route path="/contactus" element={<Contactus/>}/>
                     <Route path="/signin" element={<Signin/>}/>
+                    <Route path="/Signup" element={<Signup/>}/>
+                    <Route path="/place" element={<Place/>}/>
+                    <Route path="/chalets" element={<ChaletList/>}/>
 
                </Routes>
                

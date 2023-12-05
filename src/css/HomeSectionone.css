@@ -1,12 +1,22 @@
+.sec1{
+  background-color:white;
+  height: 500px;
+  
+  
+}
 .btn-comp{
 
-    background-color: #472d7c;
+    background-color: #658864;
   
-    width: 150px;
-    height: 40px;
+    width: 120px;
+    height: 38px;
     border: none;
     border-radius: 20px;
-    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 20px;
+  
+    
+    
     
   
   }
@@ -30,6 +40,7 @@
     color: aliceblue;
     transform: scale(0.96);
     font-size: 18px;
+    font-weight: bold;
   
   }
   
@@ -38,6 +49,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
   
   }
   
@@ -55,13 +67,18 @@
   .head-data{
   
     text-transform: uppercase;
-    font-size: 2rem;
+    font-size: 3rem;
+    color: #444;
+    font-weight: 400;
   
   }
   .All-data{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.5rem;
+    color: #444;
+    font-weight: 300;
   
   }
   .section-image{

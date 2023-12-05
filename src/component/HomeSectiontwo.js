@@ -5,6 +5,7 @@ const HomeSectiontwo=()=>{
 
 <div className="section-two">
 
+ <img src="uri for pic" alt="logo"/>
 
 </div>
 

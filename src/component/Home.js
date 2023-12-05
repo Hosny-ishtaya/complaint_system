@@ -1,23 +1,26 @@
-import React from "react";
+// import React from "react";
 
-// import image from '../image/wp1.png'
-import HomeSectionone from "./HomeSectionone";
-import HomeSectiontwo from "./HomeSectiontwo";
+// // import image from '../image/wp1.png'
+// import HomeSectionone from "./HomeSectionone";
+
+// import HomeSectiontwo from "./HomeSectiontwo";
+// import Footer from "./Footer";
 
 
-const Home=()=>{
-    return(
+// const Home=()=>{
+//     return(
 
-<div className="home">
-    <HomeSectionone/>
-    <HomeSectiontwo/>
-    {/* <Footer/> */}
+// <div className="home">
     
-    {/* <img src={image} className="img"></img> */}
-   
-</div>
+//     {/* <HomeSectiontwo/> */}    
+//     <HomeSectionone/>
+    
+//     <Footer/>
+//     {/* <Place/> */}
+    
+// </div>
 
 
-    )
-}
-export default Home;
+//     )
+// }
+// export default Home;

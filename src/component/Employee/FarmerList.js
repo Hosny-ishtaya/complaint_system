@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
-const EmployeeList = () => {
+const FarmerList = () => {
     const [empdata, empdatachange] = useState(null);
      const navigate = useNavigate();
 
@@ -43,21 +43,21 @@ const EmployeeList = () => {
         <div className="container">
             <div className="card">
                 <div className="card-title">
-                    <h2>Employee List</h2>
+                    <h2> مشتركين المزارع</h2>
                 </div>
                 <div className="card-body">
                     <div className="divbtn">
-                        <Link to="/about/addemployee" className="btn btn-success">Add Employee</Link>
+                        {/* <Link to="/about/addfarmer" className="btn btn-success">اضافة مشترك</Link> */}
                     </div>
                     <table className="table table-bordered">
                         <thead className="bg-dark text-white">
                             <tr>
-                                <td>ID</td>
-                                <td>Name</td>
-                                <td>Email</td>
-                                <td>Phone</td>
-                                <td>Adress</td>
-                                <td>Action</td>
+                                <td>رقم الهويه</td>
+                                <td>الاسم</td>
+                                <td>رقم الهاتف</td>
+                                <td>البريد الالكتروني</td>
+                                <td>رقم الشاليه</td>
+                                <td>العمليات</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,4 +87,4 @@ const EmployeeList = () => {
     );
 }
 
-export default EmployeeList;
+export default FarmerList;

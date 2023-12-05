@@ -13,21 +13,24 @@
     position:relative;
     display: flex;
     margin: auto; 
-    height: 590px; 
+    height: 500px; 
     border-radius: 20px;
     box-shadow: 1px 1px 10px lightblue;
     align-content: center;
     justify-content: center;   
   
-    width: 1000px;
+    width: 800px;
     margin-top: 0px;
     padding-top: 130px;
+
+    background-color: white;
 
 }
 .signin-form{
     height: 600px;
-    width:  600px;
+    width:  400px;
     margin-top: -10px;
+    
     
     
 }
@@ -46,12 +49,24 @@ form{
 
 .form-group{
 
-    max-width: 380px;
-    width: 100%;
+    width: 350px;
     height: 50px;
     background-color: #f0f0f0;
     margin: 10px 0;
-    border-radius: 55px;
+    border-radius: 50px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+
+
+}
+.form-grou{
+
+    width: 350px;
+    height: 100px;
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 15% 85%;
     padding: 0 0.4rem;
@@ -59,6 +74,12 @@ form{
 
 }
 .form-group i{
+    text-align: center;
+    line-height: 55px;
+    color:  #444;
+    font-size: 1.1rem;
+}
+.form-grou i{
     text-align: center;
     line-height: 55px;
     color:  #444;
@@ -74,6 +95,19 @@ form{
     font-weight: 600;
     font-size: 1.1rem;
     color: #333;
+    
+}
+.form-grou textarea{
+
+    background: none;
+    outline: none;
+    border: none;
+    padding-top: 19px;
+
+   
+    
+    font-size: 1.1rem;
+    color: #444;
 }
 
 .form-group input::placeholder{
@@ -88,7 +122,7 @@ form{
     outline: none;
     border-radius: 40px;
     cursor: pointer;
-    background-color: #001529;
+    background-color: #658864;
     color: #fff;
     margin: 20px 0;
     transition: 0.5s;
@@ -99,9 +133,10 @@ form{
 }
 
 .signin-image {
-    margin-top: 0px;
-    width: 200;
-    height: 200;
+    margin-top: -50px;
+    margin-right: -30px;
+    /* width: 150;
+    height: 200; */
 
 
    
@@ -112,4 +147,16 @@ form{
     font-weight: bold;
     
  
+}
+.signin-image-link{
+
+    margin-right: -60px;
+}
+
+#checkpoint{
+    margin-right: 50px;
+}
+.sell{
+
+    margin-bottom: 10px;
 }
